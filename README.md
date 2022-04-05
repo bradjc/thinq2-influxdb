@@ -46,5 +46,6 @@ and
 `/etc/swarm-gateway/lgthinq.conf`:
 
 ```
+device_id=
 location_general=
 ```

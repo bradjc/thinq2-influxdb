@@ -41,6 +41,20 @@ else:
 
 tags = {}
 
+# Load initial tags
+device_id = lg_config["device_id"]
+
+device = thinq.mqtt.thinq_client.get_device(device_id)
+tags[device_id] = {
+    "device_id": device_id,
+    "model": device.model_name,
+    "alias": device.alias,
+    "mac_address": device.mac_address,
+    "user_no": device.user_no,
+    "model_protocol": device.model_protocol,
+    "location_general": lg_config["location_general"],
+}
+
 
 influx_client = influxdb.InfluxDBClient(
     influx_config["url"],
@@ -64,23 +78,14 @@ def handle_mqtt_message(client, userdata, msg):
         device_id = pkt["deviceId"]
         report = pkt["data"]["state"]["reported"]
 
-        # If no meta data, fetch now.
+        # If no meta data, just use base metadata.
         if not device_id in tags:
-            device = thinq.mqtt.thinq_client.get_device(device_id)
-
             tags[device_id] = {
                 "device_id": device_id,
-                "model": device.model_name,
-                "alias": device.alias,
-                "mac_address": device.mac_address,
-                "user_no": device.user_no,
-                "model_protocol": device.model_protocol,
                 "location_general": lg_config["location_general"],
             }
 
         wd = report["washerDryer"]
-
-        # print(wd)
 
         point = {
             "measurement": "lg_washer",
