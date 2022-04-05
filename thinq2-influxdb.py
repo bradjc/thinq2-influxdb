@@ -12,7 +12,7 @@ STATE_FILE = "state.json"
 
 
 CONFIG_FILE_PATH = "/etc/swarm-gateway/lgthinq.conf"
-INFLUX_CONFIG_FILE_PATH = "/etc/swarm-gateway/influx.conf"
+INFLUX_CONFIG_FILE_PATH = "/etc/swarm-gateway/influx-lgthinq.conf"
 
 # Get LG thinq2 config.
 lg_config = {}

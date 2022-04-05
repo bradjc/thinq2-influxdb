@@ -22,7 +22,7 @@ That will create `state.json`. Copy that file to this repo.
 
 ### Config Files
 
-`/etc/swarm-gateway/influx.conf`:
+`/etc/swarm-gateway/influx-lgthinq.conf`:
 
 ```
 url=
