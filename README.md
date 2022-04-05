@@ -12,6 +12,7 @@ Setup
 First you need to get an oauth token.
 
 ```
+sudo pip3 install poetry
 git clone https://github.com/tinkerborg/thinq2-python
 cd thinq2-python
 poetry install
@@ -19,6 +20,14 @@ COUNTRY_CODE=US LANGUAGE_CODE=en-US poetry run python example.py
 ```
 
 That will create `state.json`. Copy that file to this repo.
+
+Then you need to install the thinq2 library after running `poetry install`:
+
+```
+sudo pip install git+https://github.com/tinkerborg/thinq2-python
+```
+
+
 
 ### Config Files
 
